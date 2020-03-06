@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>trendVidz</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		.search{
+			width: 100%;
+			padding: 5px;
+			border: 2px solid #424750;
+			background: #424750;
+			transition: .5s;
+			border-radius: 4px;
+			text-indent: 10px;
+			color: #d9d9d9;
+			font-family: sans-serif;
+		}
+		.search:focus,#signInBox input:focus{
+			border: 2px solid #fff;
+		}
+		.slider a{
+			margin-left: 8px
+		}
+		footer a{
+			font-size: 1.2em;
+			color: #d9d9d9;
+		}
+		footer li{
+			font-size: .8em;
+			color: #ccc;
+		}
+		#optionsLi{
+			position: relative;
+			top: 60px;
+			width: 100vw;
+		}
+		#optionsLi ul{
+			width: 100%;
+			display: flex;
+			justify-content: flex-start;
+			flex-direction: column;
+		}
+		#optionsLi ul li{
+		list-style-type: none;
+		color: #fff;
+		margin-bottom: 10px;
+		line-height: 40px;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		width: 100%;
+		position: relative;
+		left: -20px;
+		cursor: pointer;
+		}
+		#optionsLi ul li i{
+			margin:5px;
+		}
+		#settingPage{
+			transform: scale(0);
+			pointer-events: none;
+			transition: .3s;
+			z-index: 150;width: 100vw;height: 100vh;display: flex;background: #1c1f22;position: absolute;top: 0;
+			transform-origin: bottom right;
+		}
+		#signInBox label{
+			color: #fff;
+		}
+		#signInBox input{
+			width: 280px;
+			max-width: 350px;
+			padding: 4px;
+			border-radius: 4px;
+			border: 2px solid #424750;
+			background: #424750;
+			color: #fff;
+			transition: .3s;
+		}
+		#signInBox{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%) scale(0);
+			z-index: 153;
+			background: #1c1f22;
+			padding: 8px;
+			border-radius: 4px;
+			box-shadow: 0 0 10px 1000px rgba(255,255,255,.4);
+			transition: .3s;
+			transform-origin: top;
+		}
+		#userPanel{
+			width: 100vw;
+			height: 100vh;
+			background: #1c1f22;
+			z-index: 152;
+			position: absolute;
+			top: 0;
+			transform: scale(0);
+			transition: .3s;
+			transform-origin: top right;
+		}
+
+	</style>
+</head>
+<body style="background: #1c1f22;">
+<header style="display: flex;position: fixed;width: 100vw;flex-direction: column;padding: 8px;z-index: 10">
+	<div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 12px;">
+	<div>
+	<h1 class="display-4" style="font-size: 26px;margin-bottom: 0;color: #fff;"><span style="font-weight: 600;">trend</span>Vidz</h1>
+	<p style="color: #d9d9d9;margin-top: 0;font-size: 12px;margin-bottom: 0;">super-fast</p>
+	</div>
+	<i class="fa fa-user-circle" onclick="openUserPanel()" style="font-size: 22px;color: #fff;"></i>
+	</div>
+	
+		<form action="https://www.youtube.com/search" method="get">
+		<div style="display: flex;">
+		<input type="search" class="search" placeholder="search" name="q">
+		<button class="btn btn-light" style="margin-left: 5px;"><i class="fa fa-search"></i></button>
+		</div>
+	</form>
+</header>
+
+<div class="slider" style="padding: 2px;position: relative;top: 130px;overflow-x: scroll;display: flex;width: 100vw;padding-bottom: 18px;">
+	<a href="https://www.youtube.com/user/Apple" style="text-decoration: none;width: 95vw;">
+	<div style="background: rgba(255,255,255,.09);border-radius: 4px;box-shadow: 0 5px 2px #000;padding: 5px;width: 95vw;height: 120px;">
+		<h1 class="display-4" style="font-size: 22px;color: #fff;font-weight: 400;">Apple</h1>
+		<p style="margin-top: 0;color: #fff;font-size: 12px;">10.7M Subsribers</p>
+	</div>
+	</a>
+
+	<a href="https://www.youtube.com/user/SamsungMobile" style="text-decoration: none;width: 95vw;">
+	<div style="background: rgba(255,255,255,.09);border-radius: 4px;box-shadow: 0 5px 2px #000;padding: 5px;width:95vw;height: 120px;">
+		<h1 class="display-4" style="font-size: 22px;color: #fff;font-weight: 400;">Samsung</h1>
+		<p style="margin-top: 0;color: #fff;font-size: 12px;">4.22M Subsribers</p>
+	</div>
+	</a>
+
+	<a href="https://www.youtube.com/user/Microsoft" style="text-decoration: none;width: 95vw;">
+	<div style="background: rgba(255,255,255,.09);border-radius: 4px;box-shadow: 0 5px 2px #000;padding: 5px;width: 95vw;height: 120px;">
+		<h1 class="display-4" style="font-size: 22px;color: #fff;font-weight: 400;">Microsoft</h1>
+		<p style="margin-top: 0;color: #fff;font-size: 12px;">666k Subsribers</p>
+	</div>
+	</a>
+</div>
+
+
+
+
+<!--------------Setting Page----------------->
+<div id="settingPage" style="">
+	<div style="display: flex;padding: 8px;position: fixed;justify-content: flex-start;align-items: center;">
+		<button onclick="closeSetting()" class="btn btn" style="position: relative;top: -3px;"><i class="fa fa-chevron-left" style="color: #fff;font-weight: 200;"></i></button>
+		<h1 class="display-4" style="font-size: 22px;color: #fff;font-weight: 400;">Settings</h1>
+	</div>
+	<div id="optionsLi" style="overflow-y: scroll;display: flex;flex-direction: column;justify-content: flex-start;margin: 0;align-items: left">
+		
+		<ul>
+			<li><i class="fa fa-bell"></i>Notifications</li>
+			<li><i class="fa fa-lock"></i>Privacy</li>
+			<li><i class="fa fa-check"></i>Security</li>
+			<li><i class="fa fa-credit-card"></i>Payments</li>
+			<li><i class="fa fa-question-circle-o"></i>Help</li>
+			<li><i class="fa fa-info-circle"></i>About</li>
+		</ul>
+	</div>
+</div>
+
+<!--------------Setting Page End----------------->
+
+<!--------signInBox------------------>
+
+	<div id="signInBox">
+		<button class="btn btn-light btn-sm" style="float: right;" onclick="closeSignInBox()">&times;</button><br>
+		<label>Username:</label>
+		<input type="text" id="name" placeholder="username" name="">
+		<label>E-mail:</label>
+		<input type="email" id="name" placeholder="email" name="">
+		<button class="btn btn-light mt-3" style="float: right;">Save</button>	
+		<button class="btn mt-3" style="color: #fff;float: right;">Cancel</button>
+	</div>
+<!--------signInBox end------------------>
+
+<!----------------user panel-------->
+	<div id="userPanel">
+		<div style="padding: 8px;position: fixed;">
+			<button class="btn btn-sm" onclick="closeUserPanel()"><i class="fa fa-chevron-left" style="color: #fff;font-weight: 200;"></i></button>
+			<h1 class="display-4" style="font-size: 22px;color: #fff;">User Details</h1>
+		</div>
+		<div style="position: relative;top: 65px;left: 10px;">
+			<a href="#" onclick="openSignInBox()">Add Accounts</a><br><br>
+			<table class="" style="width: 100%;max-width: 300px;">
+				<tr>
+					<td style="color: #fff;">Name:</td>
+					<td style="color: #fff;" id="dtname">Ata Shaikh</td>
+				</tr>
+				<tr>
+					<td style="color: #fff;">Email:</td>
+					<td style="color: #fff;" id="dtmail">shaikhata666@gmail.com</td>
+				</tr>				
+			</table>
+		</div>
+	</div>
+<!----------------user panel end-------->
+
+
+
+
+
+<footer style="position: fixed;bottom: 0;background: #202326;width: 100vw;padding: 5px;padding-bottom: 0;z-index: 300;">
+	<ul style="display: flex;list-style-type: none;justify-content: space-between;text-align: center;">
+		<li style="color: #fff;display: flex;flex-direction: column;justify-content: center;align-items: center;text-align: center;margin-left: -25px;"><a href="#" style="margin: 0;padding: 0;"><i class="fa fa-home"></i></a>Home</li>
+		<li style="color: #fff;display: flex;flex-direction: column;justify-content: center;align-items: center;text-align: center;"><a href="#" style="margin: 0;padding: 0;"><i class="fa fa-bars"></i></a>Menu</li>
+		<li style="color: #fff;display: flex;flex-direction: column;justify-content: center;align-items: center;text-align: center;"><a onclick="openSetting()" href="#" style="margin: 0;padding: 0;"><i class="fa fa-gear" id="gear"></i></a>Settings</li>
+	</ul>
+</footer>
+
+
+
+
+<script type="text/javascript">
+	function closeSetting(){
+		var settingPage=document.getElementById('settingPage');
+		var gear=document.getElementById('gear');
+		gear.style.fontSize='1.2em';
+		gear.style.color='#fff';
+		settingPage.style='transform:scale(0)';
+		settingPage.style.pointerEvents='none';
+	}
+		function openSetting(){
+		var settingPage=document.getElementById('settingPage');
+		var gear=document.getElementById('gear');
+		gear.style.fontSize='1.5em';
+		settingPage.style='transform:scale(1)';
+		settingPage.style.pointerEvents='all';
+	}
+
+	function openSignInBox(){
+		var signInBox=document.getElementById('signInBox');
+		signInBox.style='transform:translate(-50%,-50%) scale(1)';
+		signInBox.style.pointerEvents='all';		
+	}
+		function closeSignInBox(){
+		var signInBox=document.getElementById('signInBox');
+		signInBox.style='transform:translate(-50%,-50%) scale(0)';
+		signInBox.style.pointerEvents='none';
+	}
+
+		function openUserPanel(){
+		var userPanel=document.getElementById('userPanel');
+		userPanel.style='transform:scale(1)';
+		userPanel.style.pointerEvents='all';		
+	}
+		function closeUserPanel(){
+		var userPanel=document.getElementById('userPanel');
+		userPanel.style='transform:scale(0)';
+		userPanel.style.pointerEvents='none';
+	}
+
+</script>
+
+</body>
+</html>
